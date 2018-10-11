@@ -105,9 +105,25 @@ function PrintBook(book: Book): void {
 
 //************************************************************* */
 
-let refBook = new Encyclopedia('The Great Encyclopedia', 2019, 10);
-refBook.printItem();
-console.log(`${refBook.title}, ${refBook.edition}.`);
+let Newspaper = class extends ReferenceItem {
+  printCitation(): void {
+    console.log(`Newspaper: ${this.title}.`);
+  }
+}
+
+let myPaper: ReferenceItem = new Newspaper('The Gazzette', 2016);
+myPaper.printCitation();
+
+class Novel extends class { title: string } {
+  mainCharacter: string;
+}
+
+let novel: Novel = new Novel();
+novel.
+console.log(novel);
+// let refBook: Encyclopedia = new Encyclopedia('The Great Encyclopedia', 2019, 10);
+// refBook.printItem();
+// console.log(`${refBook.title}, ${refBook.edition}.`);
 
 // let ref: ReferenceItem = new ReferenceItem('Updated Facts and Figures', 2016);
 // ref.publisher = 'Lemmah';
