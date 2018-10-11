@@ -14,7 +14,7 @@ const GetAllBooks = (): Book[] => {
   return books;
 }
 
-const LogFirstAvailable = (books): void => {
+const LogFirstAvailable = (books: Book[]): void => {
   let numberOfBooks: number = books.length;
   let firstAvailable: string = '';
   
