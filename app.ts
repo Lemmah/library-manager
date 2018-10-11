@@ -3,6 +3,10 @@ import { Book, DamageLogger, Author, Librarian, Magazine } from './intefaces';
 import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes';
 import { CalculateLateFee as CalcFee, MaxBooksAllowed, Purge} from './lib/utilityFunctions';
 import Shelf from './shelf'
+import * as _ from 'lodash';
+
+let snakeCaseTitle = _.snakeCase('Some random Snake case');
+console.log(snakeCaseTitle);
 
 
 const GetAllBooks = (): Book[] => {
