@@ -1,6 +1,6 @@
 import { Category } from './enums';
 import { Book, DamageLogger, Author, Librarian } from './intefaces';
-import { UniversityLibrarian } from './classes'
+import { UniversityLibrarian, ReferenceItem } from './classes'
 
 
 const GetAllBooks = (): Book[] => {
@@ -105,19 +105,24 @@ function PrintBook(book: Book): void {
 
 //************************************************************* */
 
-let myBook: Book = {
-  id: 5,
-  title: 'Pride and Prejudice',
-  author: 'Jane Austen',
-  available: true,
-  category: Category.Fiction,
-  pages: 250,
-  markDamaged: (reason: string) => console.log(reason)
-};
+let ref: ReferenceItem = new ReferenceItem('Updated Facts and Figures', 2016);
+ref.publisher = 'Lemmah';
+console.log(ref.publisher);
+ref.printItem();
 
-let favoriteLibrarian: Librarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'Sharon';
-favoriteLibrarian.assistCustomer('Lynda');
+// let myBook: Book = {
+//   id: 5,
+//   title: 'Pride and Prejudice',
+//   author: 'Jane Austen',
+//   available: true,
+//   category: Category.Fiction,
+//   pages: 250,
+//   markDamaged: (reason: string) => console.log(reason)
+// };
+
+// let favoriteLibrarian: Librarian = new UniversityLibrarian();
+// favoriteLibrarian.name = 'Sharon';
+// favoriteLibrarian.assistCustomer('Lynda');
 
 // PrintBook(myBook);
 // myBook.markDamaged('Missing back cover.');
