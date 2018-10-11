@@ -1,5 +1,7 @@
 import { Category } from './enums';
-import { Book } from './intefaces';
+import { Book, DamageLogger, Author, Librarian } from './intefaces';
+import { UniversityLibrarian } from './classes'
+
 
 const GetAllBooks = (): Book[] => {
   let books = [
@@ -113,8 +115,16 @@ let myBook: Book = {
   markDamaged: (reason: string) => console.log(reason)
 };
 
-PrintBook(myBook);
-myBook.markDamaged('Missing back cover.');
+let favoriteLibrarian: Librarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'Sharon';
+favoriteLibrarian.assistCustomer('Lynda');
+
+// PrintBook(myBook);
+// myBook.markDamaged('Missing back cover.');
+
+// let logDamage: DamageLogger;
+// logDamage = (damage: string) => console.log(`Damage reported: ${damage}`);
+// logDamage('coffee stains.');
 
 // let hermansBooks = GetTitles('James Joyes');
 // hermansBooks.forEach(book => console.log(book));
