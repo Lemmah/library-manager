@@ -16,7 +16,7 @@ class ReferenceItem {
   private _publisher: string;
   static department: string = 'Research';
 
-  constructor(public title: string, private year: number) {
+  constructor(public title: string, protected year: number) {
     console.log('Creating a new ReferenceItem...');
   }
 
@@ -34,4 +34,17 @@ class ReferenceItem {
   }
 }
 
-export { UniversityLibrarian, ReferenceItem };
+class Encyclopedia extends ReferenceItem {
+
+   constructor(title: string, year: number, public edition: number) {
+    super(title, year);
+   }
+
+   printItem(): void {
+     super.printItem();
+     console.log(`Edition: ${this.edition} (${this.year}).`);
+   }
+
+}
+
+export { UniversityLibrarian, ReferenceItem, Encyclopedia };
