@@ -1,7 +1,8 @@
 import { Category } from './enums';
-import { Book, DamageLogger, Author, Librarian } from './intefaces';
-import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes'
-import { CalculateLateFee as CalcFee, MaxBooksAllowed} from './lib/utilityFunctions'
+import { Book, DamageLogger, Author, Librarian, Magazine } from './intefaces';
+import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes';
+import { CalculateLateFee as CalcFee, MaxBooksAllowed, Purge} from './lib/utilityFunctions';
+import Shelf from './shelf'
 
 
 const GetAllBooks = (): Book[] => {
@@ -106,22 +107,59 @@ function PrintBook(book: Book): void {
 
 //************************************************************* */
 
-let Newspaper = class extends ReferenceItem {
-  printCitation(): void {
-    console.log(`Newspaper: ${this.title}.`);
-  }
-}
+let inventory: Array<Book> = [
+  { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+  { id: 11, title: 'The C Programming Language 11', author: 'K & R', available: true, category: Category.Software },
+  { id: 12, title: 'The C Programming Language 12', author: 'K & R', available: true, category: Category.Software },
+  { id: 13, title: 'The C Programming Language 13', author: 'K & R', available: true, category: Category.Software },
+  { id: 14, title: 'The C Programming Language 14', author: 'K & R', available: true, category: Category.Software },
+];
 
-let myPaper: ReferenceItem = new Newspaper('The Gazzette', 2016);
-myPaper.printCitation();
+let bookShelf: Shelf<Book> = new Shelf<Book>();
+inventory.forEach(book => bookShelf.add(book));
 
-class Novel extends class { title: string } {
-  mainCharacter: string;
-}
+let firstBook: Book = bookShelf.getFirst();
+console.log(firstBook);
 
-let novel: Novel = new Novel();
-novel.
-console.log(novel);
+let magazines: Array<Magazine> = [
+  { title: 'Programming Language Monthly 1', publisher: 'Code Mags' },
+  { title: 'Programming Language Monthly 2', publisher: 'Code Mags' },
+  { title: 'Programming Language Monthly 3', publisher: 'Code Mags' }
+];
+
+let magazineShelf: Shelf<Magazine> = new Shelf<Magazine>();
+magazines.forEach(magazine => magazineShelf.add(magazine));
+
+let firstMagazine: Magazine = magazineShelf.getFirst();
+console.log(firstMagazine);
+
+// let purgedBooks: Array<Book> = Purge<Book>(inventory);
+// console.log(purgedBooks);
+
+// let purgedNums: Array<number> = Purge<number>([1, 2, 3, 4, 5]);
+// console.log(purgedNums);
+
+// let purgedBooks: Book[] = Purge<Book>(GetAllBooks());
+// console.log(purgedBooks);
+
+// let Newspaper = class extends ReferenceItem {
+//   printCitation(): void {
+//     console.log(`Newspaper: ${this.title}.`);
+//   }
+// }
+
+// let myPaper: ReferenceItem = new Newspaper('The Gazzette', 2016);
+// myPaper.printCitation();
+
+// class Novel extends class { title: string } {
+//   mainCharacter: string;
+// }
+
+// let novel: Novel = new Novel();
+// novel.title = 'The River and the Source.';
+// novel.mainCharacter = 'Akoko';
+// console.log(novel);
+
 // let refBook: Encyclopedia = new Encyclopedia('The Great Encyclopedia', 2019, 10);
 // refBook.printItem();
 // console.log(`${refBook.title}, ${refBook.edition}.`);
