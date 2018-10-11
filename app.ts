@@ -1,6 +1,7 @@
 import { Category } from './enums';
 import { Book, DamageLogger, Author, Librarian } from './intefaces';
 import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes'
+import { CalculateLateFee as CalcFee, MaxBooksAllowed} from './lib/utilityFunctions'
 
 
 const GetAllBooks = (): Book[] => {
